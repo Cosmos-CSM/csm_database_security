@@ -1,10 +1,12 @@
-﻿using CSM_Foundation_Database.Entities;
-using CSM_Foundation_Database.Entities.Bases;
+﻿using CSM_Database_Core.Core.Attributes;
+using CSM_Database_Core.Entities.Abstractions.Interfaces;
+
+using CSM_Security_Database_Core.Abstractions.Bases;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CSM_Database_Security.Entities.Solutions;
+namespace CSM_Security_Database_Core.Entities.Solutions;
 
 /// <summary>
 ///     Represents an item into the solutions ecosystem representing a solution identification along the ecosystem.
@@ -21,34 +23,29 @@ public interface ISolution
     /// </remarks>
     string Sign { get; set; }
 
-
-
     /// <summary>
-    ///     Related <see cref="Permit"/> data.
+    ///     Permits data.
     /// </summary>
-    [Relation]
+    [EntityRelation]
     ICollection<Permit> Permits { get; set; }
 }
 
 /// <inheritdoc cref="ISolution"/>
 public class Solution
-    : Bases.BNamedEntity, ISolution {
-
-    #region Properties
+    : SecurityNamedEntityBase, ISolution {
 
     public string Sign { get; set; } = string.Empty;
 
-    #endregion
-
-    #region Relations
-
-    [Relation]
+    [EntityRelation]
     public ICollection<Permit> Permits { get; set; } = [];
 
-    #endregion
-
     protected override void DesignEntity(EntityTypeBuilder etBuilder) {
-        etBuilder.Property(nameof(Sign)).IsFixedLength().HasMaxLength(5).IsRequired();
-        etBuilder.HasIndex(nameof(Sign)).IsUnique();
+        etBuilder.Property(nameof(Sign))
+            .IsFixedLength()
+            .HasMaxLength(5)
+            .IsRequired();
+
+        etBuilder.HasIndex(nameof(Sign))
+            .IsUnique();
     }
 }

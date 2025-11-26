@@ -1,6 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace CSM_Database_Security.Bases;
+using CSM_Database_Core;
+
+namespace CSM_Security_Database_Core.Abstractions.Bases;
 
 /// <summary>
 ///     Represents a [CSM Database Security] entity base. 
@@ -8,10 +10,10 @@ namespace CSM_Database_Security.Bases;
 /// <remarks>
 ///     Usage must be exclusively for [CSM Database Security] entities.
 /// </remarks>
-public abstract class BEntity
-    : CSM_Foundation.Database.BEntity {
+public abstract class SecurityEntityBase
+    : EntityBase {
 
     [JsonIgnore]
-    public override Type Database { get; init; } = typeof(Database);
+    public override Type Database { get; init; } = typeof(SecurityDatabase);
 }
 

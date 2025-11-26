@@ -1,6 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace CSM_Database_Security.Bases;
+using CSM_Database_Core.Entities.Abstractions.Bases;
+
+namespace CSM_Security_Database_Core.Abstractions.Bases;
 
 /// <summary>
 ///     Represents a [CSM Database Security] entity base with naming identification.
@@ -8,9 +10,9 @@ namespace CSM_Database_Security.Bases;
 /// <remarks>
 ///     Usage must be exclusively for [CSM Database Security] entities.
 /// </remarks>
-public abstract class BNamedEntity
-    : CSM_Foundation_Database.Entities.Bases.BNamedEntity {
+public abstract class SecurityNamedEntityBase
+    : NamedEntityBase {
 
     [JsonIgnore]
-    public override Type Database { get; init; } = typeof(Database);
+    public override Type Database { get; init; } = typeof(SecurityDatabase);
 }

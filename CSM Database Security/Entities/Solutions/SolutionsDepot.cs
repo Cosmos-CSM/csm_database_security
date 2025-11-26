@@ -1,10 +1,9 @@
-﻿using CSM_Foundation.Database;
+﻿using CSM_Database_Core.Depots.Abstractions.Bases;
+using CSM_Database_Core.Entities.Abstractions.Interfaces;
 
-using CSM_Foundation_Core;
+using CSM_Foundation_Core.Abstractions.Interfaces;
 
-using CSM_Foundation_Database.Entities.Depot;
-
-namespace CSM_Database_Security.Entities.Solutions;
+namespace CSM_Security_Database_Core.Entities.Solutions;
 
 
 public interface ISolutionsDepot {
@@ -12,8 +11,8 @@ public interface ISolutionsDepot {
 }
 
 internal class SolutionsDepot
-    : BDepot<Database, Solution> {
+    : DepotBase<SecurityDatabase, Solution> {
 
-    public SolutionsDepot(Database Database, IDisposer<IEntity>? Disposer) : base(Database, Disposer) {
+    public SolutionsDepot(SecurityDatabase Database, IDisposer<IEntity>? Disposer) : base(Database, Disposer) {
     }
 }

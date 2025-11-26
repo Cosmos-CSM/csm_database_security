@@ -1,22 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using CSM_Database_Security.Bases;
-using CSM_Database_Security.Entities.Solutions;
-using CSM_Database_Security.Entities.Users;
+using CSM_Database_Core.Core.Attributes;
+using CSM_Database_Core.Core.Extensions;
 
-using CSM_Foundation_Database.Entities;
-using CSM_Foundation_Database.Extensions;
+using CSM_Security_Database_Core.Abstractions.Bases;
+using CSM_Security_Database_Core.Entities.Solutions;
+using CSM_Security_Database_Core.Entities.Users;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CSM_Database_Security.Entities;
+namespace CSM_Security_Database_Core.Entities;
 
 /// <summary>
 ///     [Entity] that stores and handles specific Feature / Solution / Action authorization for Accounts.
 /// </summary>
 public class Permit
-    : BNamedEntity {
+    : SecurityNamedEntityBase {
 
     #region Properties
 
@@ -44,7 +44,7 @@ public class Permit
     /// <remarks>
     ///     Auto included relation.
     /// </remarks>
-    [Relation]
+    [EntityRelation]
     public Solution Solution { get; set; } = default!;
 
     /// <summary>
@@ -53,7 +53,7 @@ public class Permit
     /// <remarks>
     ///     Auto included relation.
     /// </remarks>
-    [Relation]
+    [EntityRelation]
     public Feature Feature { get; set; } = default!;
 
     /// <summary>
@@ -62,7 +62,7 @@ public class Permit
     /// <remarks>
     ///     Auto included relation.
     /// </remarks>
-    [Relation]
+    [EntityRelation]
     public Actions.Action Action { get; set; } = default!;
 
     #endregion
@@ -72,13 +72,13 @@ public class Permit
     /// <summary>
     ///     <see cref="Profile"/> dependants from this <see cref="Permit"/>.
     /// </summary>
-    [Relation]
+    [EntityRelation]
     public ICollection<Profile> Profiles { get; set; } = [];
 
     /// <summary>
     ///     <see cref="User"/> dependants from this <see cref="Permit"/>.
     /// </summary>
-    [Relation]
+    [EntityRelation]
     public ICollection<User> Accounts { get; set; } = [];
 
     #endregion

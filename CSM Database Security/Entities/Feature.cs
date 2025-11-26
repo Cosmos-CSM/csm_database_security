@@ -1,10 +1,10 @@
-﻿using CSM_Database_Security.Bases;
+﻿using CSM_Database_Core.Core.Attributes;
 
-using CSM_Foundation_Database.Entities;
+using CSM_Security_Database_Core.Abstractions.Bases;
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CSM_Database_Security.Entities;
+namespace CSM_Security_Database_Core.Entities;
 
 /// <summary>
 ///     Represents an ecosystem complex feature.
@@ -26,7 +26,7 @@ public interface IFeature {
 ///     Represents an ecosystem complex feature.
 /// </summary>
 public class Feature
-    : BNamedEntity, IFeature {
+    : SecurityNamedEntityBase, IFeature {
 
     #region Properties
     public bool IsEnabled { get; set; }
@@ -38,7 +38,7 @@ public class Feature
     /// <summary>
     ///     <see cref="Permit"/> dependants from this <see cref="Feature"/>.
     /// </summary>
-    [Relation]
+    [EntityRelation]
     public ICollection<Permit> Permits { get; set; } = [];
 
     #endregion

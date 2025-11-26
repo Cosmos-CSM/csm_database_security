@@ -1,4 +1,4 @@
-﻿namespace CSM_Database_Security;
+﻿namespace CSM_Security_Database_Core.Core;
 
 /// <summary>
 /// 

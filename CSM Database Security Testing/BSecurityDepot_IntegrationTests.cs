@@ -1,12 +1,12 @@
-﻿using CSM_Database_Security;
+﻿using CSM_Database_Core.Depots.Abstractions.Interfaces;
+using CSM_Database_Core.Entities.Abstractions.Interfaces;
 
-using CSM_Foundation.Database;
+using CSM_Database_Testing.Abstractions.Bases;
+using CSM_Database_Testing.Disposing.Abstractions.Bases;
 
-using CSM_Foundation_Database.Entities.Depot;
+using CSM_Security_Database_Core;
 
-using CSM_Foundation_Database_Testing.Disposing;
-
-namespace CSM_Database_Security_Testing;
+namespace CSM_Security_Database_Testing;
 
 /// <summary>
 ///     Represents an [CSM Database Security] integration tests base.
@@ -18,7 +18,7 @@ namespace CSM_Database_Security_Testing;
 ///     Type of the <see cref="IDepot{IEntity}"/> tests are based on.    
 /// </typeparam>
 public abstract class BSecurityDepot_IntegrationTests<TEntity, TDepot>
-    : CSM_Foundation_Database_Testing.BQ_Depot<TEntity, TDepot, Database>
+    : TestingDepotBase<TEntity, TDepot, SecurityDatabase>
     where TEntity : class, IEntity, new()
     where TDepot : class, IDepot<TEntity> {
 

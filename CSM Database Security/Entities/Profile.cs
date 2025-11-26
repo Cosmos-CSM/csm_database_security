@@ -1,30 +1,30 @@
-﻿using CSM_Database_Security.Bases;
-using CSM_Database_Security.Entities.Users;
+﻿using CSM_Database_Core.Core.Attributes;
 
-using CSM_Foundation_Database.Entities;
+using CSM_Security_Database_Core.Abstractions.Bases;
+using CSM_Security_Database_Core.Entities.Users;
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CSM_Database_Security.Entities;
+namespace CSM_Security_Database_Core.Entities;
 
 /// <summary>
 ///     [Entity] that stores a relation between a collection of <see cref="Permit"/> with an <see cref="User"/>
 /// </summary>
 public class Profile
-    : BNamedEntity {
+    : SecurityNamedEntityBase {
 
     #region Relations
 
     /// <summary>
     ///     <see cref="Permit"/> related to this <see cref="Profile"/>.
     /// </summary>
-    [Relation]
+    [EntityRelation]
     public ICollection<Permit> Permits { get; set; } = default!;
 
     /// <summary>
     ///     <see cref="User"/> related to this <see cref="Profile"/>.
     /// </summary>
-    [Relation]
+    [EntityRelation]
     public ICollection<User> Accounts { get; set; } = default!;
 
     #endregion

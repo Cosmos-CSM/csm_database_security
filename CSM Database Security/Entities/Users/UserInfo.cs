@@ -1,15 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using CSM_Foundation.Database;
+using CSM_Security_Database_Core.Abstractions.Bases;
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CSM_Database_Security.Entities.Users;
+namespace CSM_Security_Database_Core.Entities.Users;
 
-/// <summary>
-///     Represents specific <see cref="IUser"/> information.
-/// </summary>
-[ActivatorReference(typeof(UserInfo))]
 public interface IUserInfo {
 
     #region Properties
@@ -57,7 +53,7 @@ public interface IUserInfo {
 ///     Represents the <see cref="Users.User"/> identification information.
 /// </summary>
 public class UserInfo
-    : CSM_Database_Security.Bases.BEntity, IUserInfo {
+    : SecurityEntityBase, IUserInfo {
 
     #region Properties
 

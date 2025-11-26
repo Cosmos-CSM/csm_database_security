@@ -2,13 +2,13 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<RootNamespace>CSM_Database_Security</RootNamespace>
+		<RootNamespace>CSM_Security_Database_Core</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CSM.Foundation.Database" Version="1.2.0" />
+	  <PackageReference Include="CSM.Database.Core" Version="2.0.0" />
 	</ItemGroup>
 
 </Project>

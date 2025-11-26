@@ -1,11 +1,11 @@
 ﻿using System.Text;
 
-using CSM_Database_Security.Entities.Users;
+using CSM_Foundation_Core.Core.Extensions;
+using CSM_Foundation_Core.Core.Utils;
 
-using CSM_Foundation_Core.Extensions;
-using CSM_Foundation_Core.Utils;
+using CSM_Security_Database_Core.Entities.Users;
 
-namespace CSM_Database_Security_Testing.Utils;
+namespace CSM_Security_Database_Testing.Utils;
 
 
 /// <summary>

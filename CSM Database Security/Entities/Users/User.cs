@@ -1,14 +1,15 @@
-﻿using CSM_Foundation.Database;
+﻿using CSM_Database_Core.Core.Attributes;
+using CSM_Database_Core.Core.Extensions;
+using CSM_Database_Core.Entities.Abstractions.Interfaces;
 
-using CSM_Foundation_Database.Entities;
-using CSM_Foundation_Database.Extensions;
+using CSM_Security_Database_Core.Core;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using BEntity = CSM_Database_Security.Bases.BEntity;
+using SecurityEntityBase = CSM_Security_Database_Core.Abstractions.Bases.SecurityEntityBase;
 
-namespace CSM_Database_Security.Entities.Users;
+namespace CSM_Security_Database_Core.Entities.Users;
 
 /// <summary>
 ///     Represents the possible <see cref="IUser"/> types.
@@ -24,13 +25,6 @@ public enum UserTypes {
     /// </summary>
     PERSON,
 }
-
-
-/// <summary>
-///     Represents a [CSM] security solution base auth user, representing credentials to authenticate users along
-///     ecosystem solutions.
-/// </summary>
-[ActivatorReference(typeof(User))]
 public interface IUser
     : IEntity {
 
@@ -60,26 +54,26 @@ public interface IUser
 
     #region Relations
 
-    [Relation]
+    [EntityRelation]
     IUserInfo UserInfo { get; set; }
 
     /// <summary>
     ///     <see cref="Permit"/> related to this <see cref="User"/>
     /// </summary>
-    [Relation]
+    [EntityRelation]
     ICollection<Permit> Permits { get; set; }
 
     /// <summary>
     ///     <see cref="Profile"/> related to this <see cref="User"/>
     /// </summary>
-    [Relation]
+    [EntityRelation]
     ICollection<Profile> Profiles { get; set; }
 
     #endregion
 }
 
 public class User
-    : BEntity, IUser {
+    : SecurityEntityBase, IUser {
 
     #region Properties
 
@@ -95,19 +89,19 @@ public class User
 
     #region Relations
 
-    [Relation]
+    [EntityRelation]
     public IUserInfo UserInfo { get; set; } = default!;
 
     /// <summary>
-    ///     <see cref="Permit"/> related to this <see cref="Users.User"/>
+    ///     <see cref="Permit"/> related to this <see cref="User"/>
     /// </summary>
-    [Relation]
+    [EntityRelation]
     public ICollection<Permit> Permits { get; set; } = [];
 
     /// <summary>
-    ///     <see cref="Profile"/> related to this <see cref="Users.User"/>
+    ///     <see cref="Profile"/> related to this <see cref="User"/>
     /// </summary>
-    [Relation]
+    [EntityRelation]
     public ICollection<Profile> Profiles { get; set; } = [];
 
     #endregion

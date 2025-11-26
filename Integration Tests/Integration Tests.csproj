@@ -22,11 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CSM Database Security Testing\CSM Database Security Testing.csproj" />
+    <ProjectReference Include="..\CSM Database Security Testing\CSM Security Database Testing.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DepotsTests\" />
   </ItemGroup>
 
 </Project>

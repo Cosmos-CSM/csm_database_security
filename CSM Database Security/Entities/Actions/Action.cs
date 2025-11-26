@@ -1,7 +1,9 @@
-﻿using CSM_Foundation_Database.Entities;
-using CSM_Foundation_Database.Entities.Bases;
+﻿using CSM_Database_Core.Core.Attributes;
+using CSM_Database_Core.Entities.Abstractions.Interfaces;
 
-namespace CSM_Database_Security.Entities.Actions;
+using CSM_Security_Database_Core.Abstractions.Bases;
+
+namespace CSM_Security_Database_Core.Entities.Actions;
 
 /// <summary>
 ///     Represents an available ecosystem action.
@@ -9,27 +11,19 @@ namespace CSM_Database_Security.Entities.Actions;
 public interface IAction
     : ICatalogEntity {
 
-    #region Relations 
-
     /// <summary>
-    ///     Permits data referencing this <see cref="Action"/>.
+    ///     Permits data.
     /// </summary>
-    [Relation]
+    [EntityRelation]
     ICollection<Permit> Permits { get; set; }
-
-    #endregion
 }
 
 /// <summary>
 ///     Represents an available ecosystem action.
 /// </summary>
 public class Action
-    : Bases.BCatalogEntity, IAction {
+    : SecurityCatalogEntityBase, IAction {
 
-    #region Relations
-
-    [Relation]
+    [EntityRelation]
     public ICollection<Permit> Permits { get; set; } = [];
-
-    #endregion
 }
